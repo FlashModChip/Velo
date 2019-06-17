@@ -32,7 +32,7 @@ def text_format(message, textFont, textSize, textColor):
     return newText
 
 
-# startmenu
+## Startmenu ########
 # Game Fonts
 font = "Wozcott.otf"
 
@@ -83,6 +83,7 @@ def main_menu():
         fpsClock.tick(FPS)
         pygame.display.set_caption("Python - Pygame Simple Main Menu Selection")
 
+## Startmenu Ende ##########
 
 
 # der Radler
@@ -90,6 +91,7 @@ class Cycler(pygame.sprite.Sprite):
     # Startkoordinaten
     x_cord = 40
     y_cord = 350
+    # Maße
     width = 100
     height = 70
 
@@ -196,7 +198,7 @@ def loopenBackgroundElemente(objTupel):
             objTupel[index].y_cord = randint(450, 500)
         objTupel[index].x_cord = randint(800, 1000)
 
-# Init des Radlers und Autos
+
 
 # Grundeinheiten des AutoElements, darauf beziehen sich alle anderen AutoElemente
 AUTO_WIDTH = 100
@@ -215,21 +217,20 @@ house_2 = BackgroundElemente('images/building-houses.png', 150, 100, True)
 
 sprite_group = pygame.sprite.Group()
 sprite_group.add(car)
-sprite_group.add(cycler)
 sprite_group.add(lkw)
 sprite_group.add(bus)
 sprite_group.add(bridge)
 sprite_group.add(house_1)
 sprite_group.add(baum_1)
 sprite_group.add(house_2)
+sprite_group.add(cycler)
 
 # Action --> Alter
 
 # Assign Variables
-
-# noch ungenutzt
-pygame.time.set_timer(USEREVENT, 200)
+menu = True
 keepGoing = True
+
 # Leben
 lifePoints = 3
 
@@ -243,6 +244,8 @@ while keepGoing:
     fpsClock.tick(FPS)
 
     # Event Handling
+    main_menu()
+
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
